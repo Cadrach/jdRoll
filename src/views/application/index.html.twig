@@ -18,10 +18,14 @@
         <link rel="stylesheet" href="{{app.request.baseUrl}}/vendor/font-awesome/css/font-awesome.min.css" type="text/css" media="all">
         <link rel="stylesheet" href="{{app.request.baseUrl}}/vendor/leaflet/dist/leaflet.css" type="text/css" media="all">
         <link rel="stylesheet" href="{{app.request.baseUrl}}/css/carte.css" type="text/css" media="all">
+        <link rel="stylesheet" href="{{app.request.baseUrl}}/css/fiche.css" type="text/css" media="all">
 
 
         <!-- Leaflet plugins -->
         <script type="text/javascript" src="{{app.request.baseUrl}}/vendor/leaflet/dist/leaflet.js"></script>
+
+        <!-- jQuery plugins -->
+        <script type="text/javascript" src="{{app.request.baseUrl}}/vendor/jquery-ui/ui/resizable.js"></script>
 
         <!-- Angular plugins-->
         <script type="text/javascript" src="{{app.request.baseUrl}}/vendor/angular-dragdrop/src/angular-dragdrop.js"></script>
@@ -36,6 +40,12 @@
         <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/carte/ctrlCarteCreator.js"></script>
         <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/carte/ctrlCarteManager.js"></script>
         <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/carte/ctrlCarteList.js"></script>
+        <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/fiche/ctrlFicheMain.js"></script>
+        <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/fiche/ctrlFicheBox.js"></script>
+
+        <!-- Our Directives -->
+        <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/fiche/directive/box-draw.js"></script>
+        <script type="text/javascript" src="{{app.request.baseUrl}}/js/angular/fiche/directive/box-resizable.js"></script>
     {% else %}
         <link rel="stylesheet" href="{{app.request.baseUrl}}/vendor/font-awesome/css/font-awesome.min.css" type="text/css" media="all">
         <link rel="stylesheet" href="{{app.request.baseUrl}}/css/jdroll.angular.min.css" type="text/css" media="all">

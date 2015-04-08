@@ -49,6 +49,10 @@ function($routeProvider, $httpProvider, growlProvider) {
                 }
             }
         })
+        .when('/fiche/:persoId', {
+            templateUrl: 'js/angular/fiche/index.html',
+            controller: 'CtrlFicheMain'
+        })
     ;
 
     //Register the interceptor via an anonymous factory

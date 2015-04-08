@@ -1,0 +1,22 @@
+
+<div jdr-box-draw on-draw-end="onDrawEnd($style)">
+
+    <div class="jdr-box" ng-repeat="box in fiche.boxes"
+
+         jdr-box-resizable
+         on-resize="onResize($event, $ui, box)"
+
+         data-drag="true"
+         data-jqyoui-options="{containment: '[jdr-box-draw]', snap: true}"
+         jqyoui-draggable="{animate:true, onStop:'onDragStop(box)'}"
+
+         ng-style="box.style">
+
+        <div class="fa fa-cogs fa-2x" ng-click="openModalBox(box)"></div>
+
+        {{box.style|json}}
+    </div>
+
+</div>
+
+<pre>{{fiche.boxes}}</pre>

@@ -70,8 +70,12 @@ module.exports = function(grunt) {
             'vendor/angular-dragdrop/src/angular-dragdrop.js',
             'vendor/angular-leaflet/dist/angular-leaflet-directive.js',
             'vendor/angular-route/angular-route.js',
-            'js/angular/application.js',
-            'js/angular/carte/*.js'
+            'vendor/angular-promise-tracker/promise-tracker.js',
+            'vendor/angular-promise-tracker/promise-tracker-http-interceptor.js',
+            'vendor/angular-strap/dist/angular-strap.js',
+            'vendor/angular-strap/dist/angular-strap.tpl.js',
+            'vendor/angular-growl-v2/build/angular-growl.js',
+            'js/angular/**/*.js'
           ]
         }
       }
@@ -83,7 +87,8 @@ module.exports = function(grunt) {
         },
         files: {
           "css/main.css": "less/main.less",
-          "css/carte.css": "less/carte.less"
+          "css/carte.css": "less/carte.less",
+          "css/fiche.css": "less/fiche.less"
         }
       }
     },
@@ -102,7 +107,8 @@ module.exports = function(grunt) {
           'css/jdroll.angular.min.css': [
              'css/datepicker.css',
              'vendor/leaflet/dist/leaflet.css',
-             'css/carte.css'
+             'css/carte.css',
+             'css/fiche.css'
            ]
         }
       }

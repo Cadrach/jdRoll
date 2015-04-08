@@ -1,0 +1,32 @@
+[jdr-box-draw] {
+    background: #EDEDED;
+    height: 600px;
+    width: 800px;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.jdr-box {
+    background: #CCC;
+    overflow: hidden;
+    border: 2px dashed transparent;
+
+    &.jdr-box-placeholder {
+        border: 2px dashed #999;
+    }
+    &.ui-resizable-resizing {
+        border: 2px dashed #999;
+    }
+
+    .fa-cogs{
+        position: absolute;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+    }
+}
