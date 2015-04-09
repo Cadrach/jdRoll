@@ -60,10 +60,10 @@ ngApplication.directive('jdrBoxDraw', function () {
                 //Compute style
                 style = {
                     position: 'absolute',
-                    left: Math.min(end[0], start[0]) + 'px',
-                    top: Math.min(end[1], start[1]) + 'px',
-                    width: Math.abs(end[0] - start[0]) + 'px',
-                    height: Math.abs(end[1] - start[1]) + 'px'
+                    left: Math.min(end[0], start[0]),
+                    top: Math.min(end[1], start[1]),
+                    width: Math.abs(end[0] - start[0]),
+                    height: Math.abs(end[1] - start[1])
                 };
 
                 //Apply style

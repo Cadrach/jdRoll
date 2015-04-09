@@ -75,7 +75,10 @@ module.exports = function(grunt) {
             'vendor/angular-strap/dist/angular-strap.js',
             'vendor/angular-strap/dist/angular-strap.tpl.js',
             'vendor/angular-growl-v2/build/angular-growl.js',
-            'js/angular/**/*.js'
+            'js/angular/application.js',
+            'js/angular/class.js',
+            'js/angular/carte/**/*.js',
+            'js/angular/fiche/**/*.js'
           ]
         }
       }

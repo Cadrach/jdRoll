@@ -1,41 +1,102 @@
 /**
  * Controller to manage a fiche
  */
-ngApplication.controller('CtrlFicheMain', ['$scope', '$http', '$modal', '$location',
-function ($scope, $http, $modal, $location) {
+ngApplication.controller('CtrlFicheMain', ['$scope', '$http', '$modal', '$location', 'jdrFactoryBox', 'jdrFactoryBloc',
+function ($scope, $http, $modal, $location, jdrFactoryBox, jdrFactoryBloc) {
 
-    $scope.fiche = {
-        blocs: [],
-        boxes: []
-    };
+    //TEMPORARY: We create the first bloc (will be added auto when creating a fiche)
+    jdrFactoryBloc.create();
 
+    /**
+     * ********************************************************************************************************
+     * ********************************************************************************************************
+     * LOCAL VARIABLES
+     * ********************************************************************************************************
+     * ********************************************************************************************************
+     */
+    var openedModals = {};
+
+    /**
+     * ********************************************************************************************************
+     * ********************************************************************************************************
+     * SCOPE VARIABLES
+     * ********************************************************************************************************
+     * ********************************************************************************************************
+     */
+    $scope.boxes = jdrFactoryBox.getBoxes();
+    $scope.store = {};
+
+    /**
+     * ********************************************************************************************************
+     * ********************************************************************************************************
+     * SCOPE METHODS
+     * ********************************************************************************************************
+     * ********************************************************************************************************
+     */
+
+    /**
+     * When draw finish, create a new box
+     * @param style
+     */
     $scope.onDrawEnd = function(style){
-        $scope.fiche.boxes.push({
-            bloc: null,
-            style: style
-        })
+        var box = jdrFactoryBox.create({
+            boxStyle: style
+        });
+
+        //Init definition
+        box.setDefinitionFromStyle();
     }
 
+    /**
+     * When drag box finishes, update box style
+     * @param event
+     * @param ui
+     * @param box
+     */
     $scope.onDragStop = function(event, ui, box){
-        box.style.left = ui.position.left + 'px';
-        box.style.top = ui.position.top + 'px';
+
+        box.setStyle({
+            left: ui.position.left,
+            top: ui.position.top
+        });
+
         $scope.$evalAsync();
         event.stopPropagation();
     }
 
+    /**
+     * When box resize finishes, update box style
+     * @param event
+     * @param ui
+     * @param box
+     */
     $scope.onResize = function(event, ui, box){
-        box.style.width = ui.size.width + 'px';
-        box.style.height = ui.size.height+ 'px';
-        event.stopPropagation();
+        box.setStyle({
+            width: ui.size.width,
+            height: ui.size.height
+        });
     }
 
+    /**
+     * Manage opened modals & open them if requested
+     * @param box
+     */
     $scope.openModalBox = function(box){
-        var scope = $scope.$new();
-        scope.box = box;
-        $modal({
-            template: 'js/angular/fiche/modal-box.html',
-            scope: scope
-        })
+        if(openedModals[box.id]){
+            //Do not open the modal twice
+            console.log(openedModals[box.id]);
+            openedModals[box.id].show();
+        }
+        else{
+            var scope = $scope.$new();
+            scope.box = box;
+            openedModals[box.id] = $modal({
+                template: 'js/angular/fiche/modal-box.html',
+                backdrop: false,
+                container: '[jdr-box-draw]',
+                scope: scope
+            })
+        }
     }
 
 }]);
