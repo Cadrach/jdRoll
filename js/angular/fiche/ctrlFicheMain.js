@@ -5,7 +5,12 @@ ngApplication.controller('CtrlFicheMain', ['$scope', '$http', '$modal', '$locati
 function ($scope, $http, $modal, $location, jdrFactoryBox, jdrFactoryBloc) {
 
     //TEMPORARY: We create the first bloc (will be added auto when creating a fiche)
-    jdrFactoryBloc.create();
+    jdrFactoryBloc.create({
+        title: "Attributs"
+    });
+    jdrFactoryBloc.create({
+        title: "Compétences"
+    });
 
     /**
      * ********************************************************************************************************
@@ -24,6 +29,7 @@ function ($scope, $http, $modal, $location, jdrFactoryBox, jdrFactoryBloc) {
      * ********************************************************************************************************
      */
     $scope.boxes = jdrFactoryBox.getBoxes();
+    $scope.blocs = jdrFactoryBloc.getBlocs();
     $scope.store = {};
 
     /**
@@ -97,6 +103,20 @@ function ($scope, $http, $modal, $location, jdrFactoryBox, jdrFactoryBloc) {
                 scope: scope
             })
         }
+    }
+
+    /**
+     * Open bloc modal
+     * @param bloc
+     */
+    $scope.openModalBloc = function(bloc){
+        var scope = $scope.$new();
+        scope.bloc = bloc;
+        $modal({
+            title: bloc.title,
+            contentTemplate: bloc.getTemplateConfigBloc(),
+            scope: scope
+        })
     }
 
 }]);

@@ -6,6 +6,9 @@
                 numberOfValuesPerLine: 2
             }, bloc);
         },
+        getValuesForBox: function(box){
+            return [];
+        },
         getTemplateDisplay: function () {
             return 'js/angular/fiche/bloc/' + this.type + '/display.html'
         },

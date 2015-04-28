@@ -1,5 +1,4 @@
-<table>
-    <div ng-repeat="line in box.lines" ng-style="box.lineStyle">
-        <input type="text" ng-model="store[box.getBloc().id][$index]"/>
-    </div>
-</table>
+<div ng-repeat="line in []|range:box.numberOfLines" ng-style="box.lineStyle">
+    <input type="text" ng-model="box.getLines()[$index].title"/>
+    <input type="text" ng-model="box.getLines()[$index].value"/>
+</div>

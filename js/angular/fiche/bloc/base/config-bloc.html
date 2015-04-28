@@ -1,3 +1,28 @@
-<div>
-    CONFIG BASE BLOC
-</div>
+<table class="table table-condensed">
+    <thead>
+        <tr><th>Option</th><th>Valeur</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Titre</td>
+            <td><input class="form-control" type="text" ng-model="bloc.title"/></td>
+        </tr>
+        <tr>
+            <td>Valeurs</td>
+            <td>
+                <div class="list-group">
+                    <!--<div class="list-group-item" >-->
+                        <input class="list-group-item form-control" type="text" ng-model="value.title" ng-repeat="value in bloc.values track by $index">
+                    <!--</div>-->
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="checkbox">
+                    <label><input type="checkbox"/> Autoriser d'autres valeurs</label>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

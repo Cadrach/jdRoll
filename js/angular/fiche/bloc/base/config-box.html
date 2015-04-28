@@ -1,3 +1,15 @@
-<div>
-    CONFIG BASE BOX
-</div>
+<table class="table table-condensed">
+    <thead>
+    <tr><th>Option</th><th>Valeur</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Nombre de ligne</td>
+        <td><input class="form-control" type="number" ng-model="box.numberOfLines" ng-change="box.updateLineHeight()"/></td>
+    </tr>
+    <tr>
+        <td>Ligne de départ</td>
+        <td><input class="form-control" type="number" ng-model="box.startingLine" min="0" max="{{box.getLines().length}}"/></td>
+    </tr>
+    </tbody>
+</table>

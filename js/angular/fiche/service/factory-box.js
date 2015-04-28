@@ -17,7 +17,8 @@ ngApplication.factory('jdrFactoryBox', ['jdrFactoryBloc', function(jdrFactoryBlo
             id: !_.isEmpty(boxes) ? _.max(_.pluck(boxes, 'id')) + 1:1,
             bloc: _.values(jdrFactoryBloc.getBlocs())[0].id,
             definition: {},
-            lines: [],
+            startingLine: 0,
+            numberOfLines: 0,
             boxStyle: {},
             lineStyle: {
                 fontSize: 10
@@ -45,9 +46,12 @@ ngApplication.factory('jdrFactoryBox', ['jdrFactoryBloc', function(jdrFactoryBlo
     Box.prototype.setStyle = function(style, type){
         type = type ? type:'box';
         angular.extend(this[type + 'Style'], style);
+        this.updateLineHeight();
+    }
 
+    Box.prototype.updateLineHeight = function(){
         //Set the line height
-        this.lineStyle.height = 100 / this.lines.length + '%';
+        this.lineStyle.height = 100 / this.numberOfLines + '%';
     }
 
     /**
@@ -55,15 +59,15 @@ ngApplication.factory('jdrFactoryBox', ['jdrFactoryBloc', function(jdrFactoryBlo
      */
     Box.prototype.setDefinitionFromStyle = function(){
         var defaultLineHeight = 14;
-        var numberOfLines = Math.floor(this.boxStyle.height / defaultLineHeight);
+        this.numberOfLines = Math.floor(this.boxStyle.height / defaultLineHeight);
 
-        this.lineStyle.height = 100 / numberOfLines + '%';
+        this.lineStyle.height = 100 / this.numberOfLines + '%';
         this.lineStyle.lineHeight = '100%';
+        this.updateLineHeight();
+    }
 
-        this.lines = [];
-        for(var i=0;i<numberOfLines;i++){
-            this.lines.push({});
-        }
+    Box.prototype.getLines = function(){
+        return this.getBloc().getValuesForBox(this);
     }
 
     /**

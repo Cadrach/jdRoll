@@ -1,4 +1,9 @@
-
+<div>
+    <div ng-repeat="bloc in blocs">
+        {{bloc.title}}
+        <div class="fa fa-cogs" ng-click="openModalBloc(bloc)"></div>
+    </div>
+</div>
 <div jdr-box-draw on-draw-end="onDrawEnd($style)">
 
     <div class="jdr-box" ng-repeat="box in boxes"
@@ -24,4 +29,5 @@
 
 </div>
 
-<pre>{{boxes}}</pre>
+<pre style="font-size: 8px;">{{boxes}}</pre>
+<pre style="font-size: 8px;">{{blocs|json}}</pre>

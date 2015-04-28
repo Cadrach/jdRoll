@@ -19,7 +19,7 @@ ngApplication.directive('jdrBoxDraw', function () {
                 }
 
                 //Store start position
-                start = [event.pageX - parentOffset.left, event.pageY - parentOffset.top];
+                start = [event.pageX - element.offset().left, event.pageY - element.offset().top];
                 //Create the box & append it to the element
                 box = angular.element('<div class="jdr-box jdr-box-placeholder"></div>');
                 element.append(box);
@@ -55,7 +55,7 @@ ngApplication.directive('jdrBoxDraw', function () {
             //On dragging the mouse
             function onMove(event){
                 //End point
-                end = [event.pageX - parentOffset.left, event.pageY - parentOffset.top];
+                end = [event.pageX - element.offset().left, event.pageY - element.offset().top];
 
                 //Compute style
                 style = {
@@ -91,7 +91,6 @@ ngApplication.directive('jdrBoxDraw', function () {
 
             //Var declarations
             var start, end, style, box;
-            var parentOffset = element.offset();
 
             //Relative positioning of parent element is mandatory
             element.css('position', 'relative');

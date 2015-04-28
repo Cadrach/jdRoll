@@ -62,9 +62,12 @@
         top: 0;
         right: 0;
         cursor: pointer;
+        z-index: 10;
         &:hover{
             opacity: 1;
         }
+//        background-color: red;
+        font-size: 24px;
     }
     .fa-arrows{
         right: auto;
@@ -91,6 +94,11 @@
             &:hover{
                 border-color: #CCC;
             }
+        }
+
+        border-bottom: 1px solid #CCC;
+        &:last-child{
+            border-bottom:0;
         }
     }
 }
